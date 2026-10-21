@@ -22,7 +22,7 @@ pnpm dev          # dashboard on :5310
 
 Sign-in uses [Nyggis accounts](../auth). Locally, run the auth Worker too (`npm run dev` in `../auth`,
 :8787), copy `.dev.vars.example` to `.dev.vars`, and register the app `drive` at
-http://localhost:8787/admin/apps (mode *Signed in*). The apps' dev servers (`pnpm dev` in each) open
+http://localhost:8787/admin/apps (mode *Public*). The apps' dev servers (`pnpm dev` in each) open
 drive files from `?file=<id>`.
 
 ## How it fits together
@@ -87,8 +87,8 @@ The database (`drive`) and the bucket (`drive-files`) are declared in `wrangler.
 1. `openssl rand -base64 32 | npx wrangler secret put TICKET_SECRET` (it offers to create the Worker if it
    doesn't exist yet).
 2. Register the app at https://auth.nyggis.com/admin/apps: id `drive`, URL `https://drive.nyggis.com`,
-   mode *Signed in* (the apps call the API for anyone who opens a file, so invite-only would lock out
-   people you share with). Set its webhook to `https://drive.nyggis.com/auth-events`.
+   mode *Public*. Anyone can open the dashboard, and the API asks them to sign in; an unregistered or
+   invite-only app would lock out the people you share with. (Registered on production 2026-10-21.) Set its webhook to `https://drive.nyggis.com/auth-events`.
 
 Then `pnpm run deploy` (not `pnpm deploy`, which is a pnpm command): it builds, applies migrations and
 deploys. On the very first run the database doesn't exist yet, so it deploys once to create it, then
