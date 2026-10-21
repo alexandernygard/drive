@@ -81,13 +81,16 @@ All under `/api`, JSON, signed-in only. Writes are accepted from the dashboard a
 
 ## Deploy
 
-One-time setup (not done yet):
+The database (`drive`) and the bucket (`drive-files`) are declared in `wrangler.jsonc` by name only;
+`wrangler deploy` creates them the first time and finds them by name after that. What's left by hand:
 
-1. `npx wrangler d1 create drive` and put the id in `wrangler.jsonc` (`REPLACE_WITH_ID`).
-2. `npx wrangler r2 bucket create drive-files`.
-3. `openssl rand -base64 32 | npx wrangler secret put TICKET_SECRET`.
-4. Register the app at https://auth.nyggis.com/admin/apps: id `drive`, URL `https://drive.nyggis.com`,
+1. `openssl rand -base64 32 | npx wrangler secret put TICKET_SECRET` (it offers to create the Worker if it
+   doesn't exist yet).
+2. Register the app at https://auth.nyggis.com/admin/apps: id `drive`, URL `https://drive.nyggis.com`,
    mode *Signed in* (the apps call the API for anyone who opens a file, so invite-only would lock out
    people you share with). Set its webhook to `https://drive.nyggis.com/auth-events`.
 
-Then `pnpm deploy` (builds, applies migrations, deploys), or deploy from Git with Workers Builds.
+Then `pnpm run deploy` (not `pnpm deploy`, which is a pnpm command): it builds, applies migrations and
+deploys. On the very first run the database doesn't exist yet, so it deploys once to create it, then
+migrates and deploys again. To deploy from Git with Workers Builds, set the deploy command to
+`pnpm run deploy`.

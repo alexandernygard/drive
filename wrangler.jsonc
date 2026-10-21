@@ -12,8 +12,9 @@
 		"run_worker_first": ["/api/*", "/collab/*", "/auth-events"]
 	},
 	// Files, folders, shares, stars, recents and who is in which document. Schema: migrations/.
-	"d1_databases": [{ "binding": "DB", "database_name": "drive", "database_id": "REPLACE_WITH_ID", "migrations_dir": "migrations" }],
-	// Uploaded files and thumbnails.
+	// No database_id: `wrangler deploy` finds the database by name, and creates it on the first deploy.
+	"d1_databases": [{ "binding": "DB", "database_name": "drive", "migrations_dir": "migrations" }],
+	// Uploaded files and thumbnails. Created on the first deploy too.
 	"r2_buckets": [{ "binding": "FILES", "bucket_name": "drive-files" }],
 	"durable_objects": {
 		"bindings": [
@@ -34,7 +35,8 @@
 		"AUTH_ORIGIN": "https://auth.nyggis.com",
 		// Editors that may call the API and open rooms from the browser (besides the dashboard itself).
 		"APP_ORIGINS": "https://word2.nyggis.com,https://xl2.nyggis.com,https://ppt2.nyggis.com"
-	}
-	// Secrets (wrangler secret put <NAME>):
+	},
+	// Set once with `wrangler secret put <NAME>`:
 	//   TICKET_SECRET   signs the short-lived room tickets: openssl rand -base64 32
+	"secrets": { "required": ["TICKET_SECRET"] }
 }

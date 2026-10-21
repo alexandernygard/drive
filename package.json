@@ -9,7 +9,7 @@
     "build": "pnpm --filter @drive/web build",
     "typecheck": "pnpm -r typecheck",
     "migrate": "wrangler d1 migrations apply drive --remote",
-    "deploy": "pnpm build && wrangler d1 migrations apply drive --remote && wrangler deploy"
+    "deploy": "pnpm build && (wrangler d1 info drive > /dev/null 2>&1 || wrangler deploy) && wrangler d1 migrations apply drive --remote && wrangler deploy"
   },
   "devDependencies": {
     "wrangler": "^4.151.3"
