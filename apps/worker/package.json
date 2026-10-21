@@ -1,0 +1,21 @@
+{
+  "name": "@drive/worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "mkdir -p ../web/dist && wrangler d1 migrations apply drive --local -c ../../wrangler.jsonc && wrangler dev -c ../../wrangler.jsonc --port 8790 --local-upstream localhost:8790",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@alexandernygard/collab": "^0.1.0",
+    "@alexandernygard/drive": "workspace:*",
+    "hono": "^4.13.13",
+    "jose": "^6.2.13",
+    "yjs": "^13.6.33"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261021.1",
+    "typescript": "~5.9.3"
+  }
+}

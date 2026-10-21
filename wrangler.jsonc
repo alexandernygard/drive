@@ -1,0 +1,40 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "drive",
+	"compatibility_date": "2026-10-18",
+	"main": "apps/worker/src/index.ts",
+	// The dashboard is static. The Worker runs first only for the API, document rooms and the auth webhook,
+	// so the shell loads from the edge and signs in through the API (401 → auth.nyggis.com).
+	"assets": {
+		"directory": "./apps/web/dist",
+		"binding": "ASSETS",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": ["/api/*", "/collab/*", "/auth-events"]
+	},
+	// Files, folders, shares, stars, recents and who is in which document. Schema: migrations/.
+	"d1_databases": [{ "binding": "DB", "database_name": "drive", "database_id": "REPLACE_WITH_ID", "migrations_dir": "migrations" }],
+	// Uploaded files and thumbnails.
+	"r2_buckets": [{ "binding": "FILES", "bucket_name": "drive-files" }],
+	"durable_objects": {
+		"bindings": [
+			// One room per document (word2, xl2, ppt2 all connect here). SQLite-backed: required on the free plan.
+			{ "name": "ROOMS", "class_name": "DriveRoom" },
+			// One live feed per user: presence and "something changed" pushes to open dashboards.
+			{ "name": "FEEDS", "class_name": "UserFeed" }
+		]
+	},
+	"migrations": [{ "tag": "v1", "new_sqlite_classes": ["DriveRoom", "UserFeed"] }],
+	// Empty the trash of items deleted more than 30 days ago.
+	"triggers": { "crons": ["17 3 * * *"] },
+	"routes": [{ "pattern": "drive.nyggis.com", "custom_domain": true }],
+	"workers_dev": false,
+	"preview_urls": false,
+	"observability": { "enabled": true },
+	"vars": {
+		"AUTH_ORIGIN": "https://auth.nyggis.com",
+		// Editors that may call the API and open rooms from the browser (besides the dashboard itself).
+		"APP_ORIGINS": "https://word2.nyggis.com,https://xl2.nyggis.com,https://ppt2.nyggis.com"
+	}
+	// Secrets (wrangler secret put <NAME>):
+	//   TICKET_SECRET   signs the short-lived room tickets: openssl rand -base64 32
+}

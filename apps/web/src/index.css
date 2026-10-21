@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@alexandernygard/components/theme.css";
+
+/* The shared drive components (share dialog, avatars, icons) carry their own Tailwind classes. */
+@source "../../../packages/drive/src";
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+}

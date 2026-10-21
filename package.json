@@ -1,0 +1,18 @@
+{
+  "name": "drive",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.14.0",
+  "scripts": {
+    "dev": "pnpm --filter @drive/web dev",
+    "dev:worker": "pnpm --filter @drive/worker dev",
+    "build": "pnpm --filter @drive/web build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "migrate": "wrangler d1 migrations apply drive --remote",
+    "deploy": "pnpm build && wrangler d1 migrations apply drive --remote && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.3"
+  }
+}
