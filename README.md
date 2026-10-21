@@ -18,7 +18,6 @@ dashboard ◀── /api/live ── UserFeed (Durable Object, one per user) ◀
 pnpm install
 pnpm dev:worker   # API + rooms on :8790 (applies D1 migrations locally first)
 pnpm dev          # dashboard on :5310
-pnpm test         # the shared package's tests
 ```
 
 Sign-in uses [Nyggis accounts](../auth). Locally, run the auth Worker too (`npm run dev` in `../auth`,
@@ -48,13 +47,20 @@ drive files from `?file=<id>`.
 - **Trash.** Trashing a folder takes its contents with it (`trashed_via`), restoring brings them back,
   and a daily cron deletes what has been in the trash for 30 days, rooms and files included.
 
-## Packages
+## Repository
 
-| Package | What it is |
+| Folder | What it is |
 |---|---|
-| `packages/drive` (`@alexandernygard/drive`) | Used by the dashboard and the apps: types, the app registry (doc → word2, sheet → xl2, deck → ppt2), starter templates, a typed API client with token refresh, and React pieces (`ShareDialog`, `DriveFileButton`, `AvatarStack`, `KindIcon`, `DriveLogo`). See its README. |
 | `apps/worker` | The Worker: Hono API, `DriveRoom` (extends collab's `DocRoom`), `UserFeed`, the auth webhook and the trash cron. |
 | `apps/web` | The dashboard: Vite + React + Tailwind 4 + `@alexandernygard/components`. |
+
+Both use [`@alexandernygard/drive`](https://github.com/alexandernygard/drive-sdk) from npm, like the apps
+do: types, the app registry (doc → word2, sheet → xl2, deck → ppt2), starter templates, a typed API client
+with token refresh, and React pieces (`ShareDialog`, `DriveFileButton`, `AvatarStack`, `KindIcon`,
+`DriveLogo`). The Worker imports `@alexandernygard/drive/core`. The apps update the package on their own
+schedule, so keep the API backwards compatible: add fields and routes, don't rename or remove them. To
+try an unreleased package change here, `pnpm pack` in drive-sdk and `pnpm add <path to the .tgz>` in the
+app that needs it, without committing that.
 
 ## API
 
@@ -83,7 +89,5 @@ One-time setup (not done yet):
 4. Register the app at https://auth.nyggis.com/admin/apps: id `drive`, URL `https://drive.nyggis.com`,
    mode *Signed in* (the apps call the API for anyone who opens a file, so invite-only would lock out
    people you share with). Set its webhook to `https://drive.nyggis.com/auth-events`.
-5. Publish `@alexandernygard/drive` (`pnpm --filter @alexandernygard/drive publish`) and switch the
-   apps' `link:` dependency to `^0.1.0`, or their Cloudflare builds can't install it.
 
 Then `pnpm deploy` (builds, applies migrations, deploys), or deploy from Git with Workers Builds.

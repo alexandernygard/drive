@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@alexandernygard/collab": "^0.1.0",
-    "@alexandernygard/drive": "workspace:*",
+    "@alexandernygard/drive": "^0.1.0",
     "hono": "^4.13.13",
     "jose": "^6.2.13",
     "yjs": "^13.6.33"

@@ -2,7 +2,7 @@
 @import "@alexandernygard/components/theme.css";
 
 /* The shared drive components (share dialog, avatars, icons) carry their own Tailwind classes. */
-@source "../../../packages/drive/src";
+@source "../node_modules/@alexandernygard/drive/dist";
 
 html,
 body,
