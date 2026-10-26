@@ -258,6 +258,16 @@ export class DriveRoom extends DocRoom<Env> {
     if (kind === "diagram") {
       return { title: source.match(/\btitle:\s*["'`]([^"'`]*)/)?.[1], text: source.slice(0, 600) }
     }
+    if (kind === "board") {
+      // One HTML file: the <title>, then the visible text (no scripts or styles).
+      const text = source
+        .replace(/<(script|style|template)\b[\s\S]*?<\/\1>/gi, " ")
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+      return { title: source.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1]?.trim(), text: text.slice(0, 600) }
+    }
     // word2 markdown: title from the front matter, then the body as plain text.
     const fm = source.match(/^---\n([\s\S]*?)\n---\n?/)
     const title = fm?.[1]?.match(/^title:\s*["']?(.*?)["']?\s*$/m)?.[1]

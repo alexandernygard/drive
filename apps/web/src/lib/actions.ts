@@ -11,7 +11,7 @@ export function openItem(item: Pick<Item, "id" | "kind">) {
   window.open(drive.openUrl(item), "_blank", "noopener")
 }
 
-const UNTITLED: Record<DocKind, string> = { doc: "Untitled document", sheet: "Untitled spreadsheet", deck: "Untitled presentation", diagram: "Untitled diagram" }
+const UNTITLED: Record<DocKind, string> = { doc: "Untitled document", sheet: "Untitled spreadsheet", deck: "Untitled presentation", diagram: "Untitled diagram", board: "Untitled board" }
 
 /**
  * Create a document and open it in its app. The tab is opened during the click, before the request,
