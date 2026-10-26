@@ -176,8 +176,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1))
       '@alexandernygard/drive':
-        specifier: ^0.1.0
-        version: 0.1.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)
+        specifier: ^0.2.0
+        version: 0.2.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)
       lucide-react:
         specifier: ^1.61.0
         version: 1.61.0(@types/react@19.3.0)(react@19.3.1)
@@ -219,8 +219,8 @@ importers:
         specifier: ^0.1.0
         version: 0.1.0(react@19.3.1)(yjs@13.6.33)
       '@alexandernygard/drive':
-        specifier: ^0.1.0
-        version: 0.1.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)
+        specifier: ^0.2.0
+        version: 0.2.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)
       hono:
         specifier: ^4.13.13
         version: 4.13.13
@@ -257,8 +257,8 @@ packages:
       react-dom: ^18.3.0 || ^19.0.0
       recharts: ^3.8.0
 
-  '@alexandernygard/drive@0.1.0':
-    resolution: {integrity: sha512-4nxwHK2cIH4e4d7wKGvrUhdX+X1JiuNmOCZuKcGPTCy6oyTLY96YKdHx0f6x0HmJYmOZjkRWBPFUyUymfTTgEg==}
+  '@alexandernygard/drive@0.2.0':
+    resolution: {integrity: sha512-3t9OsN5v2my/6I2dQXb575eECBjvArwnaecC4ZNM/uthWiC+NiHfg5rhCXjIt9dt1EuDu7aqY0/pimUQ3Uk40w==}
     engines: {node: '>=20'}
     peerDependencies:
       '@alexandernygard/components': '>=0.1.4'
@@ -2568,7 +2568,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@alexandernygard/drive@0.1.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)':
+  '@alexandernygard/drive@0.2.0(@alexandernygard/components@0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1)))(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(react@19.3.1)':
     optionalDependencies:
       '@alexandernygard/components': 0.2.0(@date-fns/tz@1.5.0)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(recharts@3.10.1(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react-is@19.3.1)(react@19.3.1)(redux@5.0.1))
       lucide-react: 1.61.0(@types/react@19.3.0)(react@19.3.1)
