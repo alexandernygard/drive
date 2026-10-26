@@ -77,7 +77,7 @@ function SignedOut() {
     <div className="relative grid min-h-svh place-items-center overflow-hidden px-6">
       <div className="relative w-full max-w-md text-center">
         <div className="mb-8 flex justify-center gap-3">
-          {(["doc", "sheet", "deck"] as const).map((k, i) => (
+          {(["doc", "sheet", "deck", "diagram"] as const).map((k, i) => (
             <span key={k} style={{ transform: `rotate(${(i - 1) * 7}deg) translateY(${i === 1 ? -6 : 0}px)` }}>
               <KindIcon kind={k} size={56} />
             </span>
@@ -87,7 +87,7 @@ function SignedOut() {
           <DriveLogo size={26} />
           <span className="text-xl font-semibold tracking-tight">Drive</span>
         </div>
-        <p className="mx-auto max-w-sm text-muted-foreground">Your documents, sheets and decks from word2, xl2 and ppt2, and everything people share with you, in one place.</p>
+        <p className="mx-auto max-w-sm text-muted-foreground">Your documents, sheets, decks and diagrams from word2, xl2, ppt2 and arrowsmith, and everything people share with you, in one place.</p>
         <Button size="lg" className="mt-8" asChild>
           <a href={drive.loginUrl(location.href)}>Sign in</a>
         </Button>

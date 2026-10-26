@@ -255,6 +255,9 @@ export class DriveRoom extends DocRoom<Env> {
         slides: [...source.matchAll(/<Title[^>]*>([^<{]*)<\/Title>/g)].map((m) => m[1]!.trim()).filter(Boolean).slice(0, 12),
       }
     }
+    if (kind === "diagram") {
+      return { title: source.match(/\btitle:\s*["'`]([^"'`]*)/)?.[1], text: source.slice(0, 600) }
+    }
     // word2 markdown: title from the front matter, then the body as plain text.
     const fm = source.match(/^---\n([\s\S]*?)\n---\n?/)
     const title = fm?.[1]?.match(/^title:\s*["']?(.*?)["']?\s*$/m)?.[1]
