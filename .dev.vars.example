@@ -1,7 +1,7 @@
 # Copy to .dev.vars for `pnpm dev:worker` (http://localhost:8790). Never commit .dev.vars.
 # Run the auth Worker locally too (~/MyStuff/Projects/auth: npm run dev, http://localhost:8787).
 AUTH_ORIGIN=http://localhost:8787
-# The dashboard and the three apps' dev servers.
-APP_ORIGINS=http://localhost:5310,http://localhost:5273,http://localhost:5199,http://localhost:5291,http://localhost:5307
+# The dashboard and the apps' dev servers.
+APP_ORIGINS=http://localhost:5310,http://localhost:5273,http://localhost:5199,http://localhost:5291,http://localhost:5307,http://localhost:5320
 # openssl rand -base64 32
 TICKET_SECRET=
