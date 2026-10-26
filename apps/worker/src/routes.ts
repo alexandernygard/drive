@@ -562,7 +562,7 @@ api.get("/items/:id/thumbnail", async (c) => {
   })
 })
 
-const EXTENSIONS: Record<string, string> = { doc: ".w2.md", deck: ".deck.tsx", sheet: ".xl2.json" }
+const EXTENSIONS: Record<string, string> = { doc: ".w2.md", deck: ".deck.tsx", diagram: ".diagram.ts", sheet: ".xl2.json" }
 const filename = (name: string) => name.replace(/[\\/:*?"<>|\u0000-\u001f]+/g, "-")
 
 api.get("/items/:id/content", async (c) => {
